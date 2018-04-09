@@ -27,7 +27,7 @@
       LambdaWrapper.__set__('Watermarker', WatermarkerMock);
       lambdaWrapper = new LambdaWrapper({});
     });
-    
+
     it('should provide some default options');
 
     it('should determine correct dist bucket');
@@ -91,19 +91,7 @@
           });
         });
 
-        it('should report error to log.error', function(done) {
-          WatermarkerMock = function () {
-            return {
-              watermark: function(next) {next('error!'); }
-            }
-          };
-          lambdaWrapper(helper.event, {
-            done: function() {
-              logMock.error.calledWithMatch(/^Unable to watermark.*/).should.be.true();
-              done();
-            }
-          });
-        });
+        it('should report error to log.error');
 
         it('should call context.done', function(done) {
           lambdaWrapper(helper.event, {
